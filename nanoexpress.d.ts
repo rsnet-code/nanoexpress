@@ -38,7 +38,7 @@ declare namespace nanoexpress {
   export type HttpRequestBody = Record<string, string | any>;
   export type HttpRequestCookies = Record<string, string>;
 
-  export interface IWebSocket extends WebSocketBasic {
+  export interface IWebSocket<UserData> extends WebSocketBasic<UserData> {
     emit(name: string, ...args: any[]): void;
 
     on(
@@ -342,7 +342,7 @@ declare namespace nanoexpress {
       options?: IWebSocketOptions
     ): INanoexpressApp;
     ws(path: string, options: IWebSocketOptions): INanoexpressApp;
-    ws(path: string, options: WebSocketBehavior): INanoexpressApp;
+    ws(path: string, options: WebSocketBehavior<any>): INanoexpressApp;
 
     publish(
       topic: string,
